@@ -23,7 +23,9 @@
 
         <c:if test="${param.action == 'add'}">
             <sql:update dataSource="${sqlSource}" var="countAdd">
-                INSERT INTO tblWorkers VALUES (?,?,?,?,?,?,?)
+                INSERT INTO tblWorkers(categoryId,wName,dob,tel,addr,email,about,active) 
+                               VALUES (?,?,?,?,?,?,?,?)
+                <sql:param value="${param.categoryId}"/>
                 <sql:param value="${param.txtName}"/>
                 <sql:param value="${param.txtDOB}"/>
                 <sql:param value="${param.txtTel}"/>
@@ -43,7 +45,8 @@
 
         <c:if test="${param.action == 'update'}">
             <sql:update dataSource="${sqlSource}" var="countAdd">
-                UPDATE tblWorkers SET wName=?,dob=?,tel=?,addr=?,email=?,about=?,active=? WHERE workerId = ${param.id}
+                UPDATE tblWorkers SET categoryId=?,wName=?,dob=?,tel=?,addr=?,email=?,about=?,active=? WHERE workerId = ${param.id}
+                <sql:param value="${param.categoryId}"/>
                 <sql:param value="${param.txtName}"/>
                 <sql:param value="${param.txtDOB}"/>
                 <sql:param value="${param.txtTel}"/>
@@ -55,14 +58,18 @@
         </c:if>
 
         <sql:query dataSource="${sqlSource}" var="selectAll">
-            SELECT * FROM tblWorkers
-        </sql:query>
+            SELECT workerId,cName,wName,dob,tel,addr,email,about,tblWorkers.active
+            FROM tblWorkers
+            INNER JOIN tblCategories
+            ON tblWorkers.categoryId = tblCategories.categoryId
+        </sql:query>       
 
         <h1>Workers Management!</h1>
         <h4><a href="workers_add.jsp">Add New Worker!</a></h4>
         <table border="1">
             <tr>
                 <th>ID</th>
+                <th>Category</th>
                 <th>Name</th>
                 <th>DOB</th>
                 <th>Tel</th>
@@ -76,6 +83,7 @@
             <c:forEach var="w" items="${selectAll.rows}">
                 <tr>
                     <td>${w.workerId}</td>
+                    <td>${w.cName}</td>
                     <td>${w.wName}</td>
                     <td>${w.dob}</td>
                     <td>${w.tel}</td>
