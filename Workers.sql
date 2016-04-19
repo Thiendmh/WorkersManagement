@@ -1,12 +1,15 @@
 ﻿USE master
+go
 
 IF EXISTS (SELECT *	FROM sys.databases	WHERE NAME = 'Workers')
 DROP DATABASE Workers
+go
 
 CREATE DATABASE Workers
+go
 
 USE Workers
-
+go
 -----------------------
 CREATE TABLE tblUsers (
 	userId INT PRIMARY KEY identity,
