@@ -12,6 +12,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>workers</title>
+        <script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
     </head>
     <body>
 
@@ -75,7 +82,7 @@
                     <td>${j.jName}</td>                  
                     <td>${j.price}</td>
                     <td>${j.active}</td>
-                    <td><a href="jobs.jsp?action=delete&id=${j.jobId}">delete</a></td>
+                    <td><a onclick="confirmGo('Sure to delete this record?','jobs.jsp?action=delete&id=${j.jobId}')" href="#">delete</a></td>
                     <td><a href="jobs_update.jsp?id=${j.jobId}">update</a></td>
                 </tr>
             </c:forEach>
