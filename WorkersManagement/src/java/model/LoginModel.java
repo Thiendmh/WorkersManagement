@@ -63,7 +63,10 @@ public class LoginModel {
         cost = 0;
     }
     
-    
+    public ArrayList addToCart(Cart c){
+        cart.add(c);
+        return cart;
+    }
     
     
 }

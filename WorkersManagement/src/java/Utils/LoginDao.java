@@ -53,6 +53,34 @@ public class LoginDao {
         }
         return null;
     }   
-  
+    
+    public static boolean insertOrderId(int userId) {
+        String sql = "Insert into tblOrders(userId) values(?)";
+        PreparedStatement prst;
+        try {
+            prst = DBConnection.getConnection().prepareStatement(sql);
+            prst.setInt(1, userId);   
+            return prst.executeUpdate()>0;            
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
+        return false;
+    }   
+    
+    public static int getOrderId() {
+        String sql = "Select Last(orderId) From tblOrders";
+        PreparedStatement prst;
+        try {
+            prst = DBConnection.getConnection().prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return -1;
+    }      
+    
     
 }

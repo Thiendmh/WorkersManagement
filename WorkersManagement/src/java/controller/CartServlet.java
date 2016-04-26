@@ -5,6 +5,7 @@
  */
 package controller;
 
+import Utils.LoginDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -16,6 +17,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Cart;
+import model.LoginModel;
 
 /**
  *
@@ -26,6 +30,7 @@ public class CartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         int jobId = Integer.parseInt(request.getParameter("txtJobId")) ;
         String jName = request.getParameter("txtJName");
         Double price = Double.parseDouble(request.getParameter("txtPrice"));
@@ -40,8 +45,11 @@ public class CartServlet extends HttpServlet {
             ex.printStackTrace();
         }
         
-        
-        
+        HttpSession session = request.getSession();
+        LoginModel loginModel = (LoginModel)session.getAttribute("login");        
+        loginModel.addToCart(new Cart(LoginDao.getOrderId()+1, jobId, startDate, endDate, quantity));
+        session.setAttribute("login", loginModel);
+        response.sendRedirect("carts_view.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
