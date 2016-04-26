@@ -5,31 +5,65 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dinhd
  */
 public class LoginModel {
-    private String username;
-    private String pwd;
+    private int role;
+    private String name;
+    private int id;
+    private ArrayList cart;
+    private double cost;
+
+    public ArrayList getCart() {
+        return cart;
+    }
+
+    public void setCart(ArrayList cart) {
+        this.cart = cart;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }  
+    
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LoginModel() {
-    }   
+        cart = new ArrayList();
+        cost = 0;
+    }
     
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
+    
+    
     
 }

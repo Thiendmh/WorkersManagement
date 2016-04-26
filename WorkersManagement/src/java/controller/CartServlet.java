@@ -5,61 +5,43 @@
  */
 package controller;
 
-import Utils.DBConnection;
-import Utils.LoginDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.LoginModel;
 
 /**
  *
  * @author dinhd
  */
-public class LoginServlet extends HttpServlet {
+public class CartServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        String u = request.getParameter("txtUsername");
-        String p = request.getParameter("txtPwd");
-
-        if (action.equalsIgnoreCase("login")) {
-            if (LoginDao.checkLogin(u, p)) {
-                LoginModel loginModel = LoginDao.checkUser(u);
-                if (loginModel != null) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("login", loginModel);
-                    if (loginModel.getRole() == 1) {
-                        response.sendRedirect("home_admin.jsp");
-                    }
-                    if (loginModel.getRole() == 2) {
-                        response.sendRedirect("home_customer.jsp");
-                    }
-                } else {
-                    request.setAttribute("error", "can not found roleId match with username!");
-                    request.getRequestDispatcher("error.jsp").forward(request, response);
-                }
-            } else {
-                request.setAttribute("error", "login fail, wrong username or password or user is not active!");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-
+        int jobId = Integer.parseInt(request.getParameter("txtJobId")) ;
+        String jName = request.getParameter("txtJName");
+        Double price = Double.parseDouble(request.getParameter("txtPrice"));
+        int quantity = Integer.parseInt("txtQuantity");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date startDate = null;
+        Date endDate = null;
+        try {
+            startDate = sdf.parse(request.getParameter("txtStartDate"));
+            endDate = sdf.parse(request.getParameter("txtEndDate"));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
         }
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

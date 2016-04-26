@@ -13,17 +13,17 @@
         <title>orders</title>
     </head>
     <body>
-        
+
         <sql:setDataSource var="sqlSource"
                            driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
                            url="jdbc:sqlserver://localhost:1433;databaseName=Workers"
                            user="sa" password="123456"
                            scope="session"/>
-        
+
         <sql:query dataSource="${sqlSource}" var="jobs">
             SELECT * FROM tblJobs WHERE categoryId = ${param.categoryId} and active = 1
         </sql:query>            
-        
+
         <h1>Order Jobs from ${param.cName}</h1>
         <table border="1">
             <tr>
@@ -36,15 +36,18 @@
                 <th>Cart</th>
             </tr>
             <c:forEach var="j" items="${jobs.rows}">
-                <tr>
-                    <td>${j.jobId}</td>
-                    <td>${j.jName}</td>
-                    <td>${j.price}</td>                  
-                    <td><input type="text" name="txtQuantity" /></td>
-                    <td><input type="text" name="txtStartDate" /></td>
-                    <td><input type="text" name="txtEndDate" /></td>
-                    <td><a href="jobs.jsp?action=delete&id=${j.jobId}">Add to Cart</a></td>
-                </tr>
+                <form action="CartServlet" method="POST">
+                    <tr>
+                        <td>${j.jobId}</td><input type="hidden" name="txtJobId"/>
+                        <td>${j.jName}</td><input type="hidden" name="txtJName"/>
+                        <td>${j.price}</td><input type="hidden" name="txtPrice"/>                  
+                        <td><input type="text" name="txtQuantity" /></td>
+                        <td><input type="text" name="txtStartDate" /></td>
+                        <td><input type="text" name="txtEndDate" /></td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                </form>                 
+
             </c:forEach>
         </table>        
     </body>

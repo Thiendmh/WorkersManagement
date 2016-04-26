@@ -8,6 +8,7 @@ package Utils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.LoginModel;
 
 /**
  *
@@ -32,21 +33,26 @@ public class LoginDao {
         return f;
     }
 
-    public static int checkUser(String username) {
-        String sql = "Select roleId from tblUsers where username=?";
+    public static LoginModel checkUser(String username) {
+        String sql = "Select roleId,username,useId from tblUsers where username=? and active=1";
         PreparedStatement prst;
         try {
             prst = DBConnection.getConnection().prepareStatement(sql);
             prst.setString(1, username);            
             try (ResultSet rs = prst.executeQuery()) {
                 while(rs.next()){
-                    return rs.getInt(1);
+                    LoginModel lm = new LoginModel();
+                    lm.setRole(rs.getInt(1));
+                    lm.setName(rs.getString(2));
+                    lm.setId(rs.getInt(3));                    
+                    return lm;
                 }                
             }
         } catch (SQLException ex) {
             ex.getStackTrace();
         }
-        return -1;
-    }
+        return null;
+    }   
+  
     
 }
