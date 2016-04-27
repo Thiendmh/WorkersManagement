@@ -36,11 +36,11 @@
                 <th>Cart</th>
             </tr>
             <c:forEach var="j" items="${jobs.rows}">
-                <form action="CartServlet" method="POST">
+                <form action="CartServlet?action=viewall" method="POST">
                     <tr>
-                        <td>${j.jobId}</td><input type="hidden" name="txtJobId"/>
-                        <td>${j.jName}</td><input type="hidden" name="txtJName"/>
-                        <td>${j.price}</td><input type="hidden" name="txtPrice"/>                  
+                        <td>${j.jobId}</td><input type="hidden" name="txtJobId" value="${j.jobId}"/>
+                        <td>${j.jName}</td><input type="hidden" name="txtJName" value="${j.jName}"/>
+                        <td>${j.price}</td><input type="hidden" name="txtPrice" value="${j.price}"/>                  
                         <td><input type="text" name="txtQuantity" /></td>
                         <td><input type="text" name="txtStartDate" /></td>
                         <td><input type="text" name="txtEndDate" /></td>

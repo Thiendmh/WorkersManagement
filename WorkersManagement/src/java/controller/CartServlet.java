@@ -31,25 +31,33 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int jobId = Integer.parseInt(request.getParameter("txtJobId")) ;
-        String jName = request.getParameter("txtJName");
-        Double price = Double.parseDouble(request.getParameter("txtPrice"));
-        int quantity = Integer.parseInt("txtQuantity");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date startDate = null;
-        Date endDate = null;
-        try {
-            startDate = sdf.parse(request.getParameter("txtStartDate"));
-            endDate = sdf.parse(request.getParameter("txtEndDate"));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        
+        String action = request.getParameter("action");
         HttpSession session = request.getSession();
-        LoginModel loginModel = (LoginModel)session.getAttribute("login");        
-        loginModel.addToCart(new Cart(LoginDao.getOrderId()+1, jobId, startDate, endDate, quantity));
-        session.setAttribute("login", loginModel);
-        response.sendRedirect("carts_view.jsp");
+        LoginModel loginModel = (LoginModel) session.getAttribute("login");
+
+        if (action.equalsIgnoreCase("viewall")) {
+            int jobId = Integer.parseInt(request.getParameter("txtJobId"));
+            String jName = request.getParameter("txtJName");
+            Double price = Double.parseDouble(request.getParameter("txtPrice"));
+            int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date startDate = null;
+            Date endDate = null;
+            try {
+                startDate = sdf.parse(request.getParameter("txtStartDate"));
+                endDate = sdf.parse(request.getParameter("txtEndDate"));
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            loginModel.addToCart(new Cart(LoginDao.getLastOrderId()+ 1, jobId, startDate, endDate, quantity));
+            session.setAttribute("login", loginModel);
+            response.sendRedirect("carts_view.jsp");
+        }
+
+        if (action.equalsIgnoreCase("delete")) {
+            int jobId = Integer.parseInt(request.getParameter("jobId"));
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

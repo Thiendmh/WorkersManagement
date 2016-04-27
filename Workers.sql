@@ -21,7 +21,7 @@ CREATE TABLE tblUsers (
 	tel VARCHAR(20),
 	addr NVARCHAR(100),
 	email VARCHAR(30),
-	about TEXT,
+	about VARCHAR(max),
 	active BIT DEFAULT 1
 	)
 
@@ -64,7 +64,7 @@ CREATE TABLE tblWorkers (
 	tel VARCHAR(20),
 	addr NVARCHAR(100),
 	email VARCHAR(30),
-	about TEXT,
+	about VARCHAR(max),
 	active BIT DEFAULT 1
 	)
 
@@ -79,9 +79,9 @@ CREATE TABLE tblWorkersInJobs (
 
 -----------------------
 INSERT INTO tblUsers (username,pwd,roleId,uName)
-VALUES  ('thien','111111',1,'Thiendmh'),
-		('hai','222222',2,'Hai'),
-		('tung','222222',2,'Tung')
+VALUES  ('thien','96e79218965eb72c92a549dd5a330112',1,'Thiendmh'),--111111(pass)
+		('hai','e3ceb5881a0a1fdaad01296d7554868d',2,'Hai'),--222222(pass)
+		('tung','e3ceb5881a0a1fdaad01296d7554868d',2,'Tung')--222222(pass)
 
 INSERT INTO tblCategories(cName,active)
 VALUES					(N'Y tế',1),
@@ -130,5 +130,11 @@ VALUES				  (1,N'Nguyễn văn A','09/09/1990','0972341888','nguyenvana@gmail.co
 					  (5,N'Nguyễn văn P','09/09/1990','0972341888','nguyenvana@gmail.com','aaaaa','addr'),
 					  (5,N'Nguyễn văn P','09/09/1990','0972341888','nguyenvana@gmail.com','aaaaa','addr'),
 					  (5,N'Nguyễn văn P','09/09/1990','0972341888','nguyenvana@gmail.com','aaaaa','addr')
+
+INSERT INTO tblOrders(userId) VALUES(2)						
 						
-						
+INSERT INTO tblOrderDetails(orderId,jobId,quantity,startDate,endDate,) 
+VALUES					   (1,2,5,'01/10/2016','01/20/2016'),
+						   (1,4,5,'01/05/2016','01/15/2016'),
+						   (1,3,5,'02/06/2016','02/12/2016'),	
+						   (1,1,5,'03/25/2016','03/30/2016'),								

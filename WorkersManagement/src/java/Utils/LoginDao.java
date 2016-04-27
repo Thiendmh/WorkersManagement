@@ -18,6 +18,7 @@ public class LoginDao {
 
     public static  boolean checkLogin(String username, String password) {
         boolean f = false;
+        password = MD5.crypt(password);
         String sql = "Select * from tblUsers where username=? and pwd=?";
         PreparedStatement prst;
         try {
@@ -34,7 +35,7 @@ public class LoginDao {
     }
 
     public static LoginModel checkUser(String username) {
-        String sql = "Select roleId,username,useId from tblUsers where username=? and active=1";
+        String sql = "Select roleId,username,userId from tblUsers where username=? and active=1";
         PreparedStatement prst;
         try {
             prst = DBConnection.getConnection().prepareStatement(sql);
@@ -44,7 +45,7 @@ public class LoginDao {
                     LoginModel lm = new LoginModel();
                     lm.setRole(rs.getInt(1));
                     lm.setName(rs.getString(2));
-                    lm.setId(rs.getInt(3));                    
+                    lm.setId(rs.getInt(3)); 
                     return lm;
                 }                
             }
@@ -67,7 +68,7 @@ public class LoginDao {
         return false;
     }   
     
-    public static int getOrderId() {
+    public static int getLastOrderId() {
         String sql = "Select Last(orderId) From tblOrders";
         PreparedStatement prst;
         try {
