@@ -26,15 +26,17 @@
                     <th>Delete</th>
                 </tr>
                 <c:set var="carts" value="${sessionScope.login.cart}"/>
-                <c:forEach var="c" items="${carts}">
+                <c:set var="i" value="0"/>
+                <c:forEach var="c" items="${carts}">                    
                     <tr>
                         <td>${c.orderId}</td>
                         <td>${c.jobId}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.startDate}"/></td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.endDate}"/></td>
                         <td>${c.quantity}</td>
-                        <td><a href="CartServlet?action=delete&jobId=${c.jobId}">Delete</a></td>
-                    </tr>                    
+                        <td><a href="CartServlet?action=delete&index=${index}">Delete</a></td>
+                    </tr>     
+                    <c:set var="index" value="${i+1}"/>
                 </c:forEach>
             </table>
         </form>

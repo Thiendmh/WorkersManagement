@@ -29,7 +29,7 @@ CREATE TABLE tblOrders (
 	orderId INT PRIMARY KEY identity,
 	userId INT FOREIGN KEY REFERENCES tblUsers(userId),
 	orderDate DATETIME DEFAULT getdate(),
-	active BIT DEFAULT 1
+	active BIT DEFAULT 0
 	)
 
 CREATE TABLE tblCategories (
@@ -53,7 +53,7 @@ CREATE TABLE tblOrderDetails (
 	startDate DATE,
 	endDate DATE,
 	quantity INT,
-	active BIT DEFAULT 1
+	active BIT DEFAULT 0
 	)
 
 CREATE TABLE tblWorkers (
@@ -133,8 +133,8 @@ VALUES				  (1,N'Nguyễn văn A','09/09/1990','0972341888','nguyenvana@gmail.co
 
 INSERT INTO tblOrders(userId) VALUES(2)						
 						
-INSERT INTO tblOrderDetails(orderId,jobId,quantity,startDate,endDate,) 
+INSERT INTO tblOrderDetails(orderId,jobId,quantity,startDate,endDate) 
 VALUES					   (1,2,5,'01/10/2016','01/20/2016'),
 						   (1,4,5,'01/05/2016','01/15/2016'),
 						   (1,3,5,'02/06/2016','02/12/2016'),	
-						   (1,1,5,'03/25/2016','03/30/2016'),								
+						   (1,1,5,'03/25/2016','03/30/2016')								

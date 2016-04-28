@@ -7,12 +7,10 @@ package controller;
 
 import Utils.LoginDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,14 +46,16 @@ public class CartServlet extends HttpServlet {
                 endDate = sdf.parse(request.getParameter("txtEndDate"));
             } catch (ParseException ex) {
                 ex.printStackTrace();
-            }
-            loginModel.addToCart(new Cart(LoginDao.getLastOrderId()+ 1, jobId, startDate, endDate, quantity));
+            }            
+            loginModel.addToCart(new Cart(LoginDao.getLastOrderId()+1, jobId, startDate, endDate, quantity));
             session.setAttribute("login", loginModel);
             response.sendRedirect("carts_view.jsp");
         }
 
         if (action.equalsIgnoreCase("delete")) {
-            int jobId = Integer.parseInt(request.getParameter("jobId"));
+            int index = Integer.parseInt(request.getParameter("index"));
+            loginModel.getCart().remove(index); 
+            response.sendRedirect("carts_view.jsp");
         }
 
     }

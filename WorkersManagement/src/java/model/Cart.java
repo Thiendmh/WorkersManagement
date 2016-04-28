@@ -67,10 +67,6 @@ public class Cart {
         this.startDate = startDate;
         this.endDate = endDate;
         this.quantity = quantity;
-    }
-    
-    
-    
-    
+    }    
     
 }

@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author dinhd
  */
 public class LoginModel {
+
     private int role;
     private String name;
     private int id;
@@ -32,8 +33,8 @@ public class LoginModel {
 
     public void setCost(double cost) {
         this.cost = cost;
-    }  
-    
+    }
+
     public int getRole() {
         return role;
     }
@@ -62,11 +63,16 @@ public class LoginModel {
         cart = new ArrayList();
         cost = 0;
     }
-    
-    public ArrayList addToCart(Cart c){
+
+    public ArrayList addToCart(Cart c) {
+        for (Object obj : cart) {
+            Cart car = (Cart) obj;
+            if (c.getJobId() == car.getJobId()) {
+                car.setQuantity(car.getQuantity() + c.getQuantity());
+                return cart;
+            }
+        }
         cart.add(c);
         return cart;
     }
-    
-    
 }

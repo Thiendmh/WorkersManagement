@@ -8,6 +8,7 @@ package Utils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import model.LoginModel;
 
 /**
@@ -69,11 +70,11 @@ public class LoginDao {
     }   
     
     public static int getLastOrderId() {
-        String sql = "Select Last(orderId) From tblOrders";
-        PreparedStatement prst;
+        String sql = "SELECT TOP 1 orderId FROM tblOrders ORDER BY orderId DESC";
+        Statement stm;
         try {
-            prst = DBConnection.getConnection().prepareStatement(sql);
-            ResultSet rs = prst.executeQuery();
+            stm = DBConnection.getConnection().createStatement();
+            ResultSet rs = stm.executeQuery(sql);
             while(rs.next()){
                 return rs.getInt(1);
             }
