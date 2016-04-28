@@ -54,35 +54,6 @@ public class LoginDao {
             ex.getStackTrace();
         }
         return null;
-    }   
-    
-    public static boolean insertOrderId(int userId) {
-        String sql = "Insert into tblOrders(userId) values(?)";
-        PreparedStatement prst;
-        try {
-            prst = DBConnection.getConnection().prepareStatement(sql);
-            prst.setInt(1, userId);   
-            return prst.executeUpdate()>0;            
-        } catch (SQLException ex) {
-            ex.getStackTrace();
-        }
-        return false;
-    }   
-    
-    public static int getLastOrderId() {
-        String sql = "SELECT TOP 1 orderId FROM tblOrders ORDER BY orderId DESC";
-        Statement stm;
-        try {
-            stm = DBConnection.getConnection().createStatement();
-            ResultSet rs = stm.executeQuery(sql);
-            while(rs.next()){
-                return rs.getInt(1);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return -1;
-    }      
-    
+    }    
     
 }

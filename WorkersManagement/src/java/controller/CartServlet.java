@@ -5,6 +5,7 @@
  */
 package controller;
 
+import Utils.CartDao;
 import Utils.LoginDao;
 import java.io.IOException;
 import java.text.ParseException;
@@ -47,7 +48,7 @@ public class CartServlet extends HttpServlet {
             } catch (ParseException ex) {
                 ex.printStackTrace();
             }            
-            loginModel.addToCart(new Cart(LoginDao.getLastOrderId()+1, jobId, startDate, endDate, quantity));
+            loginModel.addToCart(new Cart(CartDao.getLastOrderId()+1, jobId, startDate, endDate, quantity));
             session.setAttribute("login", loginModel);
             response.sendRedirect("carts_view.jsp");
         }
@@ -56,6 +57,11 @@ public class CartServlet extends HttpServlet {
             int index = Integer.parseInt(request.getParameter("index"));
             loginModel.getCart().remove(index); 
             response.sendRedirect("carts_view.jsp");
+        }
+        
+        if (action.equalsIgnoreCase("approve")) {
+            
+            response.sendRedirect("home_customer.jsp");
         }
 
     }

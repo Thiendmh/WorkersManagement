@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Cart Details</h1>
-        <form action="" method="POST">
+        <form action="CartServlet?action=approve" method="POST">
             <table border="1">
                 <tr>
                     <th>orderId</th>
@@ -39,6 +39,7 @@
                     <c:set var="index" value="${i+1}"/>
                 </c:forEach>
             </table>
+            <input type="submit" value="Approve" />
         </form>
     </body>
 </html>
