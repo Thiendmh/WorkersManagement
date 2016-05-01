@@ -60,7 +60,8 @@ public class CartServlet extends HttpServlet {
         }
         
         if (action.equalsIgnoreCase("approve")) {
-            
+            CartDao.insertOrders(loginModel.getId());
+            CartDao.insertOrderDetails(loginModel.getCart());
             response.sendRedirect("home_customer.jsp");
         }
 

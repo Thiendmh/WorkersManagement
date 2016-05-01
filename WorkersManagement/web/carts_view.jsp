@@ -18,27 +18,36 @@
         <form action="CartServlet?action=approve" method="POST">
             <table border="1">
                 <tr>
-                    <th>orderId</th>
-                    <th>jobId</th>
+                    <th>No</th>
+                    <th>Job Name</th>
+                    <th>Category Name</th>
                     <th>startDate</th>
                     <th>endDate</th>
                     <th>quantity</th>
+                    <th>price</th>
+                    <th>total</th>
                     <th>Delete</th>
                 </tr>
                 <c:set var="carts" value="${sessionScope.login.cart}"/>
-                <c:set var="i" value="0"/>
+                <c:set var="index" value="0"/>
+                <c:set var="total" value="0"/>
                 <c:forEach var="c" items="${carts}">                    
                     <tr>
-                        <td>${c.orderId}</td>
-                        <td>${c.jobId}</td>
+                        <td>${index+1}</td>
+                        <td>${c.jName}</td>
+                        <td>${c.cName}</td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.startDate}"/></td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.endDate}"/></td>
                         <td>${c.quantity}</td>
+                        <td>${c.price}</td>
+                        <td>${c.quantity*c.price}</td>
                         <td><a href="CartServlet?action=delete&index=${index}">Delete</a></td>
                     </tr>     
-                    <c:set var="index" value="${i+1}"/>
+                    <c:set var="index" value="${index+1}"/>
+                    <c:set var="total" value="${total + c.quantity*c.price}"/>
                 </c:forEach>
             </table>
+            <h4>SumTotal: ${total}</h4>
             <input type="submit" value="Approve" />
         </form>
     </body>
