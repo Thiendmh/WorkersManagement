@@ -1,4 +1,6 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -7,30 +9,30 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- Bootstrap Core CSS -->
-        <link href="Assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
         <!-- Custom CSS -->
-        <link href="Assets/css/style.css" rel='stylesheet' type='text/css' />
+        <link href="${pageContext.request.contextPath}/Assets/css/style.css" rel='stylesheet' type='text/css' />
         <!-- font CSS -->
         <!-- font-awesome icons -->
-        <link href="Assets/css/font-awesome.css" rel="stylesheet"> 
+        <link href="${pageContext.request.contextPath}/Assets/css/font-awesome.css" rel="stylesheet"> 
         <!-- //font-awesome icons -->
         <!-- js-->
-        <script src="../Assets/js/jquery-1.11.1.min.js"></script>
-        <script src="../Assets/js/modernizr.custom.js"></script>
+        <script src="${pageContext.request.contextPath}/Assets/js/jquery-1.11.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/Assets/js/modernizr.custom.js"></script>
         <!--webfonts-->
         <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <!--//webfonts--> 
         <!--animate-->
-        <link href="Assets/css/animate.css" rel="stylesheet" type="text/css" media="all">
-        <script src="../Assets/js/wow.min.js"></script>
+        <link href="${pageContext.request.contextPath}/Assets/css/animate.css" rel="stylesheet" type="text/css" media="all">
+        <script src="${pageContext.request.contextPath}/Assets/js/wow.min.js"></script>
         <script>
             new WOW().init();
         </script>
         <!--//end-animate-->
         <!-- Metis Menu -->
-        <script src="../Assets/js/metisMenu.min.js"></script>
-        <script src="../Assets/js/custom.js"></script>
-        <link href="Assets/css/custom.css" rel="stylesheet">
+        <script src="${pageContext.request.contextPath}/Assets/js/metisMenu.min.js"></script>
+        <script src="${pageContext.request.contextPath}/Assets/js/custom.js"></script>
+        <link href="${pageContext.request.contextPath}/Assets/css/custom.css" rel="stylesheet">
         <!--//Metis Menu -->
     </head> 
     <body class="cbp-spmenu-push">
@@ -44,51 +46,31 @@
                                 <a href="#"><i class="fa fa-home nav_icon"></i>Dashboard</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-cogs nav_icon"></i>Categories <span class="nav-badge">  5</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
+                                <a href="users.jsp"><i class="fa fa-cogs nav_icon"></i>Users </span></a>
+<!--                                <ul class="nav nav-second-level collapse">
                                     <li>
-                                        <a href="grids.html">Grid System</a>
+                                        <a href="#">Grid System</a>
                                     </li>
                                     <li>
-                                        <a href="media.html">Media Objects</a>
+                                        <a href="#">Media Objects</a>
                                     </li>
-                                </ul>
+                                </ul>-->
                                 <!-- /nav-second-level -->
                             </li>
                             
                             <li>
-                                <a href="tables.html"><i class="fa fa-table nav_icon"></i>Tables <span class="nav-badge">05</span></a>
+                                <a href="workers.jsp"><i class="fa fa-table nav_icon"></i>Workers </a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-check-square-o nav_icon"></i>Forms<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li>
-                                        <a href="forms.html">Basic Forms <span class="nav-badge-btm">07</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="validation.html">Validation</a>
-                                    </li>
-                                </ul>
+                                <a href="jobs.jsp"><i class="fa fa-check-square-o nav_icon"></i>Jobs</a>                               
                                 <!-- //nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-file-text-o nav_icon"></i>Pages<span class="nav-badge-btm">02</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li>
-                                        <a href="login.html">Login</a>
-                                    </li>
-                                    <li>
-                                        <a href="signup.html">SignUp</a>
-                                    </li>
-                                    <li>
-                                        <a href="blank-page.html">Blank Page</a>
-                                    </li>
-                                </ul>
+                                <a href="orders.jsp"><i class="fa fa-file-text-o nav_icon"></i>Orders</a>
+                                
                                 <!-- //nav-second-level -->
                             </li>
-                            <li>
-                                <a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>Charts <span class="nav-badge-btm pull-right">new</span></a>
-                            </li>
+                           
                         </ul>
                         <div class="clearfix"> </div>
                         <!-- //sidebar-collapse -->
@@ -135,7 +117,7 @@
                                         </div>
                                     </li>
                                     <li><a href="#">
-                                            <div class="user_img"><img src="Assets/images/1.png" alt=""></div>
+                                            <div class="user_img"><img src="${pageContext.request.contextPath}/Assets/images/1.png" alt=""></div>
                                             <div class="notification_desc">
                                                 <p>Lorem ipsum dolor amet</p>
                                                 <p><span>1 hour ago</span></p>
@@ -143,7 +125,7 @@
                                             <div class="clearfix"></div>	
                                         </a></li>
                                     <li class="odd"><a href="#">
-                                            <div class="user_img"><img src="Assets/images/2.png" alt=""></div>
+                                            <div class="user_img"><img src="${pageContext.request.contextPath}/Assets/images/2.png" alt=""></div>
                                             <div class="notification_desc">
                                                 <p>Lorem ipsum dolor amet </p>
                                                 <p><span>1 hour ago</span></p>
@@ -151,7 +133,7 @@
                                             <div class="clearfix"></div>	
                                         </a></li>
                                     <li><a href="#">
-                                            <div class="user_img"><img src="Assets/images/3.png" alt=""></div>
+                                            <div class="user_img"><img src="${pageContext.request.contextPath}/Assets/images/3.png" alt=""></div>
                                             <div class="notification_desc">
                                                 <p>Lorem ipsum dolor amet </p>
                                                 <p><span>1 hour ago</span></p>
@@ -174,7 +156,7 @@
                                         </div>
                                     </li>
                                     <li><a href="#">
-                                            <div class="user_img"><img src="Assets/images/2.png" alt=""></div>
+                                            <div class="user_img"><img src="${pageContext.request.contextPath}/Assets/images/2.png" alt=""></div>
                                             <div class="notification_desc">
                                                 <p>Lorem ipsum dolor amet</p>
                                                 <p><span>1 hour ago</span></p>
@@ -182,7 +164,7 @@
                                             <div class="clearfix"></div>	
                                         </a></li>
                                     <li class="odd"><a href="#">
-                                            <div class="user_img"><img src="Assets/images/1.png" alt=""></div>
+                                            <div class="user_img"><img src="${pageContext.request.contextPath}/Assets/images/1.png" alt=""></div>
                                             <div class="notification_desc">
                                                 <p>Lorem ipsum dolor amet </p>
                                                 <p><span>1 hour ago</span></p>
@@ -190,7 +172,7 @@
                                             <div class="clearfix"></div>	
                                         </a></li>
                                     <li><a href="#">
-                                            <div class="user_img"><img src="Assets/images/3.png" alt=""></div>
+                                            <div class="user_img"><img src="${pageContext.request.contextPath}/Assets/images/3.png" alt=""></div>
                                             <div class="notification_desc">
                                                 <p>Lorem ipsum dolor amet </p>
                                                 <p><span>1 hour ago</span></p>
@@ -264,7 +246,7 @@
                             <li class="dropdown profile_details_drop">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <div class="profile_img">	
-                                        <span class="prfil-img"><img src="Assets/images/a.png" alt=""> </span> 
+                                        <span class="prfil-img"><img src="${pageContext.request.contextPath}/Assets/images/a.png" alt=""> </span> 
                                         <div class="user-name">
                                             <p>Wikolia</p>
                                             <span>Administrator</span>

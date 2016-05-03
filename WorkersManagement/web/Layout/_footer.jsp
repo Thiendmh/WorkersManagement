@@ -7,7 +7,7 @@
 <!--//footer-->
 </div>
 <!-- Classie -->
-<script src="../Assets/js/classie.js"></script>
+<script src="${pageContext.request.contextPath}/Assets/js/classie.js"></script>
 <script>
     var menuLeft = document.getElementById('cbp-spmenu-s1'),
             showLeftPush = document.getElementById('showLeftPush'),
@@ -27,10 +27,10 @@
     }
 </script>
 <!--scrolling js-->
-<script src="../Assets/js/jquery.nicescroll.js"></script>
-<script src="../Assets/js/scripts.js"></script>
+<script src="${pageContext.request.contextPath}/Assets/js/jquery.nicescroll.js"></script>
+<script src="${pageContext.request.contextPath}/Assets/js/scripts.js"></script>
 <!--//scrolling js-->
 <!-- Bootstrap Core JavaScript -->
-<script src="../Assets/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/Assets/js/bootstrap.js"></script>
 </body>
 </html>

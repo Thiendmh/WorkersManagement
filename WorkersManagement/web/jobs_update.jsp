@@ -1,37 +1,27 @@
-<%-- 
-    Document   : workers_update
-    Created on : Apr 18, 2016, 5:05:15 PM
-    Author     : dinhd
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update Worker</title>
-    </head>
-    <body>
+<%@include file="Layout/_header.jsp" %>
 
-        <sql:setDataSource var="sqlSource"
-                           driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                           url="jdbc:sqlserver://localhost:1433;databaseName=Workers"
-                           user="sa" password="123456"
-                           scope="session"/>
+<sql:setDataSource var="sqlSource"
+                   driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                   url="jdbc:sqlserver://localhost:1433;databaseName=Workers"
+                   user="sa" password="123456"
+                   scope="session"/>
 
-        <sql:query dataSource="${sqlSource}" var="jobs">
-            SELECT * FROM tblJobs WHERE jobId = ${param.id}
-        </sql:query>
+<sql:query dataSource="${sqlSource}" var="jobs">
+    SELECT * FROM tblJobs WHERE jobId = ${param.id}
+</sql:query>
 
-        <sql:query dataSource="${sqlSource}" var="categories">
-            SELECT * FROM tblCategories           
-        </sql:query> 
+<sql:query dataSource="${sqlSource}" var="categories">
+    SELECT * FROM tblCategories           
+</sql:query> 
 
-        <h1>Update Job</h1>
+<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+    <div class="form-title">
+        <h4>Update Job</h4>
+    </div>
+    <div class="form-body">
         <c:forEach var="j" items="${jobs.rows}">
             <form action="jobs.jsp?action=update&id=${param.id}" method="POST">
-                <table>               
+                <table class="table">               
                     <tr>
                         <th>ID</th>
                         <th>${param.id}</th>
@@ -45,7 +35,7 @@
                                             <c:if test="${c.categoryId == j.categoryId}">
                                                 selected
                                             </c:if>
-                                    >${c.cName}</option>
+                                            >${c.cName}</option>
                                 </c:forEach>
                             </select>
                         </td>
@@ -74,9 +64,12 @@
                         </td>
                     </tr>                          
                 </table>
-                <input type="submit" value="Update" />
+                <button class="btn btn-primary" type="submit">Update</button>
             </form>
         </c:forEach>
+    </div>
+</div>
 
-    </body>
-</html>
+<%@include file="Layout/_footer.jsp" %>
+
+

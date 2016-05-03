@@ -1,7 +1,5 @@
 <%@include file="Layout/_header.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
 
 <script>
     function confirmGo(m, u) {
@@ -51,9 +49,9 @@
     INNER JOIN tblCategories
     ON tblJobs.categoryId = tblCategories.categoryId
 </sql:query>    
-    
+
 <div class="tables">
-    <h3 class="title1">Jobs Management!</h3>                        
+    <h3 class="title1">Jobs Management</h3>                        
 
     <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
         <h4><a href="jobs_add.jsp">Add New Job</a></h4>

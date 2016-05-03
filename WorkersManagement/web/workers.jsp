@@ -1,8 +1,4 @@
 <%@include file="Layout/_header.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <script>
     function confirmGo(m, u) {
@@ -62,7 +58,7 @@
 </sql:query>       
 
 <div class="tables">
-    <h3 class="title1">Workers Management</h3>                        
+    <h3 class="title1">Workers Management</h3>
 
     <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
         <h4><a href="workers_add.jsp">Add New Worker</a></h4>
@@ -86,8 +82,8 @@
                     <td>${w.workerId}</td>
                     <td>${w.cName}</td>
                     <td>${w.wName}</td>
-                    <td>
-                        <f:formatDate pattern="dd/MM/yyyy" value="${w.dob}" />
+                    <td>${w.dob}
+                        <%--<fmt:formatDate pattern="dd/MM/yyyy" value="${w.dob}" />--%>
                     </td>
                     <td>${w.tel}</td>
                     <td>${w.addr}</td>
@@ -102,4 +98,5 @@
 
     </div>
 </div>
+
 <%@include file="Layout/_footer.jsp" %>
