@@ -1,31 +1,19 @@
-<%-- 
-    Document   : carts_view
-    Created on : Apr 23, 2016, 5:43:31 PM
-    Author     : dinhd
---%>
+<%@include file="Layout/_header_customer.jsp" %>
+<div class="tables">
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cart View</title>
-    </head>
-    <body>
-        <h1>Cart Details</h1>
+    <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
+        <h4>Cart Details</h4>
         <form action="CartServlet?action=approve" method="POST">
-            <table border="1">
+            <table class="table">
                 <tr>
                     <th>No</th>
                     <th>Job Name</th>
                     <th>Category Name</th>
-                    <th>startDate</th>
-                    <th>endDate</th>
-                    <th>quantity</th>
-                    <th>price</th>
-                    <th>total</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
                     <th>Delete</th>
                 </tr>
                 <c:set var="carts" value="${sessionScope.login.cart}"/>
@@ -48,7 +36,11 @@
                 </c:forEach>
             </table>
             <h4>SumTotal: ${total}</h4>
-            <input type="submit" value="Approve" />
+            <input type="submit" value="Approve" class="btn btn-primary"/>
         </form>
-    </body>
-</html>
+        <br>
+    </div>
+</div>
+
+<%@include file="Layout/_footer.jsp" %>
+

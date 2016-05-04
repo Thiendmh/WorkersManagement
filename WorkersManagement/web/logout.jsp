@@ -12,6 +12,6 @@
         <title>logout</title>
     </head>
     <body>
-        <h1>Log out!</h1>
+        <h1>Log out successfully!</h1>
     </body>
 </html>
