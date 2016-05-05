@@ -1,21 +1,10 @@
-<%-- 
-    Document   : users.jsp
-    Created on : May 5, 2016, 3:03:41 PM
-    Author     : Administrator
---%>
+<%@include file="Layout/_header.jsp" %>
+<div class="tables">
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>User list!</h1>
-        <table border="1">
+    <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
+        <h4>Users List</h4>
+
+        <table class="table">
             <tr>
                 <th>User ID</th>
                 <th>Username</th>
@@ -25,7 +14,7 @@
                 <th>Email</th>
                 <th>Status</th>
                 <th>Active</th>
-                <th>Decactive</th>
+                <th>Deactive</th>
             </tr>
             <c:forEach var="u" items="${sessionScope.users}">
                 <tr>
@@ -55,5 +44,7 @@
                 </tr>
             </c:forEach>
         </table>
-    </body>
-</html>
+    </div>
+</div>
+
+<%@include file="Layout/_footer.jsp" %>

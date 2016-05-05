@@ -1,22 +1,10 @@
-<%-- 
-    Document   : WorkersinJob
-    Created on : May 5, 2016, 5:54:00 PM
-    Author     : Administrator
---%>
+<%@include file="Layout/_header.jsp" %>
+<div class="tables">
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Worker Free!</h1>
+    <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
+        <h4>Assign Workers</h4>
         <form action="OrderMgmtServlet?action=addWIJ" method="post">
-        <table border="1">
+        <table class="table">
             <tr>
                 <th>Worker ID</th>
                 <th>Worker Name</th>
@@ -24,7 +12,7 @@
                 <th>Address</th>
                 <th>Email</th>
                 <th>About</th>
-                <th>Order</th>
+                <th>Assign</th>
             </tr>
             <c:forEach var="w" items="${sessionScope.workers}">
                 <tr>
@@ -39,7 +27,11 @@
             </c:forEach>
                     
         </table>
-        <input type="submit" value="xong"/>
+            <input type="submit" value="Apply" class="btn btn-primary"/>
+            <br><br>
+            
         </form>
-    </body>
-</html>
+ </div>
+</div>
+
+<%@include file="Layout/_footer.jsp" %>   

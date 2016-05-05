@@ -1,21 +1,9 @@
-<%-- 
-    Document   : OrderDetails
-    Created on : May 4, 2016, 8:37:35 AM
-    Author     : Administrator
---%>
+<%@include file="Layout/_header.jsp" %>
+<div class="tables">
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Order Details!</h1>
-        <table border="1">
+    <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
+        <h4>Order Details!</h4>
+        <table class="table">
             <tr>
                 <th>Oder Details ID</th>
                 <th>Job Name</th>
@@ -46,5 +34,7 @@
                 </tr>
             </c:forEach>
         </table>
-    </body>
-</html>
+ </div>
+</div>
+
+<%@include file="Layout/_footer.jsp" %>  

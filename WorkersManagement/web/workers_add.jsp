@@ -10,6 +10,7 @@
     SELECT * FROM tblCategories           
 </sql:query> 
 
+
 <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
     <div class="form-title">
         <h4><a href="jobs_add.jsp">Add New Worker</a></h4>
