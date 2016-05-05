@@ -46,7 +46,7 @@
                                 <a href="#"><i class="fa fa-home nav_icon"></i>Dashboard</a>
                             </li>
                             <li>
-                                <a href="users.jsp"><i class="fa fa-cogs nav_icon"></i>Users </span></a>
+                                <a href="ReisterServlet?action=viewUsers"><i class="fa fa-cogs nav_icon"></i>Users </span></a>
 <!--                                <ul class="nav nav-second-level collapse">
                                     <li>
                                         <a href="#">Grid System</a>
@@ -66,7 +66,7 @@
                                 <!-- //nav-second-level -->
                             </li>
                             <li>
-                                <a href="orders.jsp"><i class="fa fa-file-text-o nav_icon"></i>Orders</a>
+                                <a href="OrderMgmtServlet?action=viewOrder"><i class="fa fa-file-text-o nav_icon"></i>Orders</a>
                                 
                                 <!-- //nav-second-level -->
                             </li>

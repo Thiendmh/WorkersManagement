@@ -16,6 +16,14 @@
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>controller.CartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderMgmtServlet</servlet-name>
+        <servlet-class>controller.OrderMgmtServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReisterServlet</servlet-name>
+        <servlet-class>controller.ReisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderMgmtServlet</servlet-name>
+        <url-pattern>/OrderMgmtServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReisterServlet</servlet-name>
+        <url-pattern>/ReisterServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
