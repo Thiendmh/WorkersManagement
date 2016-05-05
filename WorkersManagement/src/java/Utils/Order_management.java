@@ -43,19 +43,20 @@ public class Order_management {
     }
     public static ArrayList<OrderDetails> getOrderDetails(int orderId){
         ArrayList<OrderDetails> list = new ArrayList<>();
-        String sql = "SELECT orderId,o.jobId,j.jName,startDate,endDate,quantity,o.active "
+        String sql = "SELECT o.odId,orderId,o.jobId,j.jName,startDate,endDate,quantity,o.active "
                 + "FROM tblOrderDetails o inner join tblJobs j on o.jobId = j.jobId WHERE orderId="+orderId;
         try {
             ResultSet rs = DBConnection.getConnection().createStatement().executeQuery(sql);
             while (rs.next()) {                
                 OrderDetails od = new OrderDetails();
-                od.setOrderId(rs.getInt(1));
-                od.setJobId(rs.getInt(2));
-                od.setJobName(rs.getString(3));
-                od.setStDate(rs.getDate(4));
-                od.setEndDate(rs.getDate(5));
-                od.setQuantity(rs.getInt(6));
-                od.setActive(rs.getByte(7));
+                od.setOdId(rs.getInt(1));
+                od.setOrderId(rs.getInt(2));
+                od.setJobId(rs.getInt(3));
+                od.setJobName(rs.getString(4));
+                od.setStDate(rs.getDate(5));
+                od.setEndDate(rs.getDate(6));
+                od.setQuantity(rs.getInt(7));
+                od.setActive(rs.getByte(8));
                 list.add(od);
             }
         } catch (SQLException ex) {
@@ -117,12 +118,12 @@ public class Order_management {
         }
         return false;
     }
-    public static boolean UpdateActive(int orderId,int active){
-        String sql = "UPDATE tblOrderDetails SET active = ? where orderId=?";
+    public static boolean UpdateActive(int odId,int active){
+        String sql = "UPDATE tblOrderDetails SET active = ? where odId=?";
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement(sql);
             ps.setInt(1, active);
-            ps.setInt(2, orderId);
+            ps.setInt(2, odId);
             return ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(RegisterDao.class.getName()).log(Level.SEVERE, null, ex);

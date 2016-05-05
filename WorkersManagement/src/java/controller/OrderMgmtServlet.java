@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
  */
 public class OrderMgmtServlet extends HttpServlet {
 
-    int orderId = 0;
+    int odId = 0;
     Date stDate=null;
     Date endDate=null;
     int jobId=0;
@@ -44,7 +44,7 @@ public class OrderMgmtServlet extends HttpServlet {
             response.sendRedirect("order_management.jsp");
         }
         if(ac.equals("viewOrderDetails")){
-            orderId = Integer.parseInt(request.getParameter("orderId"));
+           int orderId = Integer.parseInt(request.getParameter("orderId"));
             ArrayList<OrderDetails> listDetails = Order_management.getOrderDetails(orderId);
             HttpSession session = request.getSession();
             session.setAttribute("orderDetails", listDetails);
@@ -53,6 +53,7 @@ public class OrderMgmtServlet extends HttpServlet {
         
         if(ac.equals("workerFreeTime")){
             try {
+                odId = Integer.parseInt(request.getParameter("odId"));
                 jobId = Integer.parseInt(request.getParameter("jobId"));
                 int cateId = Order_management.getCateId(jobId);
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -72,8 +73,8 @@ public class OrderMgmtServlet extends HttpServlet {
                 int workerId = Integer.parseInt(item);
                 Order_management.addWIJ(jobId, workerId, stDate, endDate);
             }
-            Order_management.UpdateActive(orderId, 1);
-            response.sendRedirect("OrderMgmtServlet?action=viewOrderDetails&orderId="+orderId);
+            Order_management.UpdateActive(odId, 1);
+            response.sendRedirect("OrderMgmtServlet?action=viewOrderDetails&orderId="+odId);
         }
     }
 

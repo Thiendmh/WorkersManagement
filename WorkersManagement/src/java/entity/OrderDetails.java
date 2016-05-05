@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Administrator
  */
 public class OrderDetails {
+    private int odId;
     private int orderId;
     private int jobId;
     private String jobName;
@@ -23,7 +24,8 @@ public class OrderDetails {
     public OrderDetails() {
     }
 
-    public OrderDetails(int orderId, int jobId, String jobName, Date stDate, Date endDate, int quantity, byte active) {
+    public OrderDetails(int odId, int orderId, int jobId, String jobName, Date stDate, Date endDate, int quantity, byte active) {
+        this.odId = odId;
         this.orderId = orderId;
         this.jobId = jobId;
         this.jobName = jobName;
@@ -31,6 +33,14 @@ public class OrderDetails {
         this.endDate = endDate;
         this.quantity = quantity;
         this.active = active;
+    }
+
+    public int getOdId() {
+        return odId;
+    }
+
+    public void setOdId(int odId) {
+        this.odId = odId;
     }
 
     public int getOrderId() {

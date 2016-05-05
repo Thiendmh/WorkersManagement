@@ -34,7 +34,7 @@
                     <td><fmt:formatDate type="both" pattern="dd-MM-yyyy"
                                     value="${od.endDate}" /></td>
                     <td>${od.quantity}</td>
-                    <td><a href="OrderMgmtServlet?action=workerFreeTime&jobId=${od.jobId}&stDate=${od.stDate}&endDate=${od.endDate}">Xu ly</a></td>
+                    <td><a href="OrderMgmtServlet?action=workerFreeTime&odId=${od.odId}&jobId=${od.jobId}&stDate=${od.stDate}&endDate=${od.endDate}">Xu ly</a></td>
                     <c:choose>
                         <c:when test="${od.active == 0}">
                             <td>Chua xu ly</td>
