@@ -76,7 +76,23 @@ CREATE TABLE tblWorkersInJobs (
 	endDate DATE,
 	active BIT DEFAULT 1
 	)
-
+------------------------
+create proc workersFreeTime
+@cateID int,
+@stDate date,
+@endDate date
+as
+begin
+select *
+  from tblWorkers
+      where not exists(
+	  select 1
+      from tblWorkersInJobs where workerId = tblWorkers.workerId and
+         (@stDate between startDate and endDate   
+          or @endDate between startDate and endDate
+          or startDate between @stDate and @endDate)
+		  ) and categoryId = @cateID and 
+end
 -----------------------
 INSERT INTO tblUsers (username,pwd,roleId,uName)
 VALUES  ('thien','96e79218965eb72c92a549dd5a330112',1,'Thiendmh'),--111111(pass)
