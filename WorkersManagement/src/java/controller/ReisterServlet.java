@@ -54,7 +54,7 @@ public class ReisterServlet extends HttpServlet {
                 String addr = request.getParameter("txtAdd");
                 String email = request.getParameter("txtEmail");
                 String about = request.getParameter("txtAbout");
-                byte active = 1;
+                byte active = 0;
                 User user = new User(userId, userName, pass, role, name, dob, tel, addr, email, about, active);
                 RegisterDao.addUser(user);
                 response.sendRedirect("login.jsp");

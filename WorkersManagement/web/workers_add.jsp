@@ -10,6 +10,11 @@
     SELECT * FROM tblCategories           
 </sql:query> 
 
+<script>
+    $(function () {
+        $("#txtDOB").datepicker();
+    });
+</script>
 
 <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
     <div class="form-title">
@@ -34,7 +39,7 @@
                 </tr>
                 <tr>
                     <th>DOB</th>
-                    <td><input type="text" name="txtDOB"/></td>
+                    <td><input type="text" name="txtDOB" id="txtDOB"/></td>
                 </tr>
                 <tr>
                     <th>Tel</th>

@@ -39,7 +39,7 @@ public class CartServlet extends HttpServlet {
             String jName = request.getParameter("txtJName");
             Double price = Double.parseDouble(request.getParameter("txtPrice"));
             int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             Date startDate = null;
             Date endDate = null;
             try {

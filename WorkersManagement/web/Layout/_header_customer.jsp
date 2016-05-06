@@ -34,6 +34,10 @@
         <script src="${pageContext.request.contextPath}/Assets/js/custom.js"></script>
         <link href="${pageContext.request.contextPath}/Assets/css/custom.css" rel="stylesheet">
         <!--//Metis Menu -->
+         <!--JQuery UI -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+         <!--//JQuery UI -->
     </head> 
 
     <sql:setDataSource var="sqlSource"
@@ -241,8 +245,8 @@
                                     <div class="profile_img">	
                                         <span class="prfil-img"><img src="${pageContext.request.contextPath}/Assets/images/a.png" alt=""> </span> 
                                         <div class="user-name">
-                                            <p>Wikolia</p>
-                                            <span>Administrator</span>
+                                            <p>${sessionScope.login.name}</p>
+                                            <span>Customer</span>
                                         </div>
                                         <i class="fa fa-angle-down lnr"></i>
                                         <i class="fa fa-angle-up lnr"></i>
@@ -252,7 +256,7 @@
                                 <ul class="dropdown-menu drp-mnu">
                                     <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                     <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-                                    <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    <li> <a href="LoginServlet?action=logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
                                 </ul>
                             </li>
                         </ul>

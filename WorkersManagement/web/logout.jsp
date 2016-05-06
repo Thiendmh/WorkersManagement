@@ -12,6 +12,6 @@
         <title>logout</title>
     </head>
     <body>
-        <h1>Log out successfully!</h1>
+        <h4>Log out successfully, Click  <a href="login.jsp">here</a> to login!</h4>
     </body>
 </html>

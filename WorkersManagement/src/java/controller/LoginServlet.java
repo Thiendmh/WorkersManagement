@@ -56,7 +56,12 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("error", "login fail, wrong username or password or user is not active!");
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
+        }
 
+        if (action.equalsIgnoreCase("logout")) {
+            HttpSession session = request.getSession();
+            session.removeAttribute("login");
+            response.sendRedirect("logout.jsp");
         }
     }
 

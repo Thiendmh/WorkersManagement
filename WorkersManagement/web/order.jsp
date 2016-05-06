@@ -10,6 +10,12 @@
     SELECT * FROM tblJobs WHERE categoryId = ${param.categoryId} and active = 1
 </sql:query>            
 
+<script>
+    $(function () {
+        $(".txtStartDate,.txtEndDate").datepicker();
+    });
+</script>    
+    
 <div class="tables">
 
     <div class="bs-example widget-shadow" data-example-id="contextual-table"> 
@@ -31,8 +37,8 @@
                     <td>${j.jName}</td><input type="hidden" name="txtJName" value="${j.jName}"/>
                     <td>${j.price}</td><input type="hidden" name="txtPrice" value="${j.price}"/>                  
                     <td><input type="text" name="txtQuantity" /></td>
-                    <td><input type="text" name="txtStartDate" /></td>
-                    <td><input type="text" name="txtEndDate" /></td>
+                    <td><input type="text" name="txtStartDate" class="txtStartDate"/></td>
+                    <td><input type="text" name="txtEndDate" class="txtEndDate" /></td>
                     <td><button class="btn btn-info">Add to Cart</button></td>
                     </tr>
                 </form>                 

@@ -24,8 +24,8 @@
                         <td>${index+1}</td>
                         <td>${c.jName}</td>
                         <td>${c.cName}</td>
-                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.startDate}"/></td>
-                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.endDate}"/></td>
+                        <td><fmt:formatDate pattern="dd-MM-yyyy" value="${c.startDate}"/></td>
+                        <td><fmt:formatDate pattern="dd-MM-yyyy" value="${c.endDate}"/></td>
                         <td>${c.quantity}</td>
                         <td>${c.price}</td>
                         <td>${c.quantity*c.price}</td>

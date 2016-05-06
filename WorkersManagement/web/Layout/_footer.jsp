@@ -2,7 +2,7 @@
 </div>
 <!--footer-->
 <div class="footer">
-    <p>&copy; 2016 Admin Panel. All Rights Reserved </p>
+    <p>&copy; 2016 Workers Management. All Rights Reserved - GC1002</p>
 </div>
 <!--//footer-->
 </div>
