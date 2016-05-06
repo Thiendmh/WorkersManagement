@@ -32,6 +32,7 @@ public class OrderMgmtServlet extends HttpServlet {
     Date stDate=null;
     Date endDate=null;
     int jobId=0;
+    int orderId = 0;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -43,7 +44,7 @@ public class OrderMgmtServlet extends HttpServlet {
             response.sendRedirect("order_management.jsp");
         }
         if(ac.equals("viewOrderDetails")){
-           int orderId = Integer.parseInt(request.getParameter("orderId"));
+            orderId = Integer.parseInt(request.getParameter("orderId"));
             ArrayList<OrderDetails> listDetails = Order_management.getOrderDetails(orderId);
             HttpSession session = request.getSession();
             session.setAttribute("orderDetails", listDetails);
@@ -73,7 +74,7 @@ public class OrderMgmtServlet extends HttpServlet {
                 Order_management.addWIJ(jobId, workerId, stDate, endDate);
             }
             Order_management.UpdateActive(odId, 1);
-            response.sendRedirect("OrderMgmtServlet?action=viewOrderDetails&orderId="+odId);
+            response.sendRedirect("OrderMgmtServlet?action=viewOrderDetails&orderId="+orderId);
         }
     }
 
