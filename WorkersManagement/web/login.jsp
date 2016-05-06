@@ -34,6 +34,10 @@
         <script src="${pageContext.request.contextPath}/Assets/js/custom.js"></script>
         <link href="${pageContext.request.contextPath}/Assets/css/custom.css" rel="stylesheet">
         <!--//Metis Menu -->
+        <!--JQuery UI -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <!--//JQuery UI -->
     </head> 
     <body class="cbp-spmenu-push">
         <div class="main-content">
@@ -136,7 +140,12 @@
                                                                 <h4>DOB :</h4>
                                                             </div>
                                                             <div class="sign-up2">
-                                                                <input type="text" name="txtDob">
+                                                                <script>
+                                                                    $(function () {
+                                                                        $("#txtDob").datepicker();
+                                                                    });
+                                                                </script>    
+                                                                <input type="text" name="txtDob" id="txtDob">
                                                             </div>
                                                             <div class="clearfix"> </div>
                                                         </div>
@@ -163,7 +172,7 @@
                                                                 <h4>Address:</h4>
                                                             </div>
                                                             <div class="sign-up2">
-                                                                <input type="text" name="txtAdd" required>
+                                                                <input type="text" name="txtAdd" >
                                                             </div>
                                                             <div class="clearfix"> </div>
                                                         </div>
@@ -172,7 +181,12 @@
                                                                 <h4>About:</h4>
                                                             </div>
                                                             <div class="sign-up2">
-                                                                <input type="text" name="txtAbout" required>
+<!--                                                                <form method="post" action="${pageContext.request.contextPath}/Uploader"
+                                                                      encType="multipart/form-data">
+                                                                    <input type="file" name="file" value="select images..."/>
+                                                                    <input type="submit" value="start upload"/>
+                                                                </form>-->
+                                                                <input type="text" name="txtAbout" >
                                                             </div>
                                                             <div class="clearfix"> </div>
                                                         </div>
@@ -239,22 +253,22 @@
         <!-- Classie -->
         <script src="${pageContext.request.contextPath}/Assets/js/classie.js"></script>
         <script>
-                                                        var menuLeft = document.getElementById('cbp-spmenu-s1'),
-                                                                showLeftPush = document.getElementById('showLeftPush'),
-                                                                body = document.body;
+                                                                    var menuLeft = document.getElementById('cbp-spmenu-s1'),
+                                                                            showLeftPush = document.getElementById('showLeftPush'),
+                                                                            body = document.body;
 
-                                                        showLeftPush.onclick = function () {
-                                                            classie.toggle(this, 'active');
-                                                            classie.toggle(body, 'cbp-spmenu-push-toright');
-                                                            classie.toggle(menuLeft, 'cbp-spmenu-open');
-                                                            disableOther('showLeftPush');
-                                                        };
+                                                                    showLeftPush.onclick = function () {
+                                                                        classie.toggle(this, 'active');
+                                                                        classie.toggle(body, 'cbp-spmenu-push-toright');
+                                                                        classie.toggle(menuLeft, 'cbp-spmenu-open');
+                                                                        disableOther('showLeftPush');
+                                                                    };
 
-                                                        function disableOther(button) {
-                                                            if (button !== 'showLeftPush') {
-                                                                classie.toggle(showLeftPush, 'disabled');
-                                                            }
-                                                        }
+                                                                    function disableOther(button) {
+                                                                        if (button !== 'showLeftPush') {
+                                                                            classie.toggle(showLeftPush, 'disabled');
+                                                                        }
+                                                                    }
         </script>
         <!--scrolling js-->
         <script src="${pageContext.request.contextPath}/Assets/js/jquery.nicescroll.js"></script>

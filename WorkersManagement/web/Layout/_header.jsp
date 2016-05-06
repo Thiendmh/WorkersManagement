@@ -250,7 +250,7 @@
                             <li class="dropdown profile_details_drop">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <div class="profile_img">	
-                                        <span class="prfil-img"><img src="${pageContext.request.contextPath}/Assets/images/a.png" alt=""> </span> 
+                                        <span class="prfil-img"><img src="${pageContext.request.contextPath}/Assets/images/thien.jpg" alt=""> </span> 
                                         <div class="user-name">
                                             <p>${sessionScope.login.name}</p>
                                             <span>Administrator</span>

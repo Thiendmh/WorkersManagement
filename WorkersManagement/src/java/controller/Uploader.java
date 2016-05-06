@@ -5,20 +5,24 @@
  */
 package controller;
 
-import Utils.LoginDao;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.LoginModel;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author dinhd
  */
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "Uploader", urlPatterns = {"/Uploader"})
+@MultipartConfig
+public class Uploader extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,40 +36,33 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        String u = request.getParameter("txtUsername");
-        String p = request.getParameter("txtPwd");
-
-        if (action.equalsIgnoreCase("login")) {
-            if (LoginDao.checkLogin(u, p)) {
-                LoginModel loginModel = LoginDao.checkUser(u);
-                if (loginModel != null) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("login", loginModel);
-                    if (loginModel.getRole() == 1) {
-                        response.sendRedirect("home_admin.jsp");
-                    }
-                    if (loginModel.getRole() == 2) {
-                        response.sendRedirect("home_customer.jsp");
-                    }
-                } else {
-                    request.setAttribute("error", "can not found roleId match with username!");
-                    request.getRequestDispatcher("error.jsp").forward(request, response);
-                }
-            } else {
-                request.setAttribute("error", "login fail, wrong username or password or user is not active!");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-        }
-
-        if (action.equalsIgnoreCase("logout")) {
-            HttpSession session = request.getSession();
-            session.removeAttribute("login");
-            session.removeAttribute("workers");
-            session.removeAttribute("orders");
-            session.removeAttribute("orderDetails");
-            response.sendRedirect("logout.jsp");
-        }
+//        try (PrintWriter out = response.getWriter()) {
+//            
+//            FileItemFactory itemfactory = new DiskFileItemFactory();
+//            ServletFileUpload upload = new ServletFileUpload(itemfactory);
+//            try {
+//                List<fileitem> items = upload.parseRequest(request);
+//                for (FileItem item : items) {
+//
+//                    String contentType = item.getContentType();
+//                    if (!contentType.equals("image/png")) {
+//                        out.println("only png format image files supported");
+//                        continue;
+//                    }
+//                    File uploadDir = new File("F:\\UploadedFiles");
+//                    File file = File.createTempFile("img", ".png", uploadDir);
+//                    item.write(file);
+//
+//                    out.println("File Saved Successfully");
+//                }
+//            } catch (FileUploadException e) {
+//
+//                out.println("upload fail");
+//            } catch (Exception ex) {
+//
+//                out.println("can't save");
+//            }
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -94,6 +91,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+        String fileName = filePart.getSubmittedFileName();
+        InputStream fileContent = filePart.getInputStream();
+        //Continue.....
         processRequest(request, response);
     }
 

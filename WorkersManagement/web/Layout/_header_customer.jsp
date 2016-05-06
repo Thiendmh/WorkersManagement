@@ -55,7 +55,7 @@
             <!--left-fixed -navigation-->
             <div class=" sidebar" role="navigation">
                 <div class="navbar-collapse">
-                    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+                    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="width: 296px;">
                         <ul class="nav" id="side-menu">
 
                             <li>
@@ -243,7 +243,7 @@
                             <li class="dropdown profile_details_drop">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <div class="profile_img">	
-                                        <span class="prfil-img"><img src="${pageContext.request.contextPath}/Assets/images/a.png" alt=""> </span> 
+                                        <span class="prfil-img"><img src="${pageContext.request.contextPath}/Assets/images/i2.png" alt=""> </span> 
                                         <div class="user-name">
                                             <p>${sessionScope.login.name}</p>
                                             <span>Customer</span>
